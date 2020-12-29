@@ -56,8 +56,6 @@ namespace API.ServicesImpl
 
             var userToCreate = _mapper.Map<AppUser>(userToRegisterDTO);
 
-            var result = await _userManager.CreateAsync(userToCreate, userToRegisterDTO.Password);
-
             switch(userToRegisterDTO.Role)
             {
                 case("Admin"):
@@ -67,8 +65,10 @@ namespace API.ServicesImpl
                     await _userManager.AddToRoleAsync(userToCreate, "User");
                     break;
                 default:
-                    throw new Exception("Error occured");
+                    throw new Exception("No role");
             }
+
+            var result = await _userManager.CreateAsync(userToCreate, userToRegisterDTO.Password);
 
             if(!result.Succeeded) throw new Exception(result.Errors.ToString());
 

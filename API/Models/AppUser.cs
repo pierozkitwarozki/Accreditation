@@ -8,5 +8,7 @@ namespace API.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public ICollection<AppUserRole> UserRoles { get; set; }
+        public ICollection<Accreditation> Accreditations { get; set; }
+        public ICollection<Application> Applications { get; set; }
     }
 }

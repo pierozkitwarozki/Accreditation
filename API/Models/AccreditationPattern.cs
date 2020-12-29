@@ -9,5 +9,7 @@ namespace API.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public ICollection<Attachment> Attachments { get; set; }
+        public ICollection<Accreditation> Accreditations { get; set; }
+        public ICollection<Application> Applications { get; set; }
     }
 }

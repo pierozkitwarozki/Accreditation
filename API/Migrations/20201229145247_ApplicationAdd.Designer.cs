@@ -3,14 +3,16 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20201229145247_ApplicationAdd")]
+    partial class ApplicationAdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -219,28 +221,6 @@ namespace API.Migrations
                     b.ToTable("Attachments");
                 });
 
-            modelBuilder.Entity("API.Models.UserAttachment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ApplicationId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationId");
-
-                    b.ToTable("UserAttachment");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
@@ -393,17 +373,6 @@ namespace API.Migrations
                     b.Navigation("Pattern");
                 });
 
-            modelBuilder.Entity("API.Models.UserAttachment", b =>
-                {
-                    b.HasOne("API.Models.Application", "Application")
-                        .WithMany("UserAttachments")
-                        .HasForeignKey("ApplicationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Application");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("API.Models.AppRole", null)
@@ -461,11 +430,6 @@ namespace API.Migrations
                     b.Navigation("Applications");
 
                     b.Navigation("UserRoles");
-                });
-
-            modelBuilder.Entity("API.Models.Application", b =>
-                {
-                    b.Navigation("UserAttachments");
                 });
 #pragma warning restore 612, 618
         }

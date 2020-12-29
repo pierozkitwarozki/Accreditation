@@ -28,6 +28,36 @@ namespace API.Data
                 .HasForeignKey(u => u.RoleId)
                 .IsRequired();
 
+            builder.Entity<Accreditation>()
+                .HasOne(a => a.User)
+                .WithMany(a => a.Accreditations)
+                .HasForeignKey(a => a.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Accreditation>()
+                .HasOne(a => a.Pattern)
+                .WithMany(a => a.Accreditations)
+                .HasForeignKey(a => a.PatternId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Application>()
+                .HasOne(a => a.User)
+                .WithMany(a => a.Applications)
+                .HasForeignKey(a => a.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Application>()
+                .HasOne(a => a.Pattern)
+                .WithMany(a => a.Applications)
+                .HasForeignKey(a => a.PatternId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<UserAttachment>()
+                .HasOne(a => a.Application)
+                .WithMany(a => a.UserAttachments)
+                .HasForeignKey(a => a.ApplicationId)
+                .OnDelete(DeleteBehavior.Cascade);
+
           /* builder.Entity<Attachment>()
                 .HasOne(p => p.Pattern)
                 .WithMany(p => p.Attachments)
@@ -40,6 +70,22 @@ namespace API.Data
 
             builder.Entity<AccreditationPattern>()
                 .Navigation(x => x.Attachments)
+                .AutoInclude();
+
+            builder.Entity<Application>()
+                .Navigation(x => x.Pattern)
+                .AutoInclude();
+
+            builder.Entity<Application>()
+                .Navigation(x => x.User)
+                .AutoInclude();
+
+            builder.Entity<Accreditation>()
+                .Navigation(x => x.Pattern)
+                .AutoInclude();
+
+            builder.Entity<Accreditation>()
+                .Navigation(x => x.User)
                 .AutoInclude();
         }
     }
