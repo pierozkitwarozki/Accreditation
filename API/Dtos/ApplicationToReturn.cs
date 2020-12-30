@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using API.Models;
+
 namespace API.Dtos
 {
     public class ApplicationToReturn
@@ -9,6 +12,7 @@ namespace API.Dtos
         public string Surname { get; set; }
         public string AdminComment { get; set; }
         public bool Approved { get; set; }
+        public ICollection<UserAttachmentToReturn> UserAttachments { get; set; }
         
     }
 }

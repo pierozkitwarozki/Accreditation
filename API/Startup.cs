@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using API.Data;
+using API.Helpers;
 using API.Models;
 using API.Repos;
 using API.ReposImpl;
@@ -55,15 +56,24 @@ namespace API
                 Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
 
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             //repos
             services.AddScoped<IAccreditationPatternRepo, AccreditationPatternRepo>();
             services.AddScoped<IAttachmentRepo, AttachmentRepo>();
+            services.AddScoped<IApplicationRepo, ApplicationRepo>();
+            services.AddScoped<IUserAttachmentRepo, UserAttachmentRepo>();
+            services.AddScoped<IAccreditationRepo, AccreditationRepo>();
 
             //services
             services.AddScoped<IAccreditationPatternService, AccreditationPatternService>();
             services.AddScoped<IAttachmentService, AttachmentService>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IApplicationService, ApplicationService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserAttachmentService, UserAttachmentService>();
+            services.AddScoped<IAccreditationService, AccreditationService>();
+            services.AddScoped<IFileService, FileService>();
             
             services.AddAutoMapper(typeof(AccreditationPatternRepo));
 

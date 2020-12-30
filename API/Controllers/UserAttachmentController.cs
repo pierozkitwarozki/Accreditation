@@ -8,16 +8,16 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AttachmentController : ControllerBase
+    public class UserAttachmentController : ControllerBase
     {
-        private readonly IAttachmentService service;
-        public AttachmentController(IAttachmentService service)
+        private readonly IUserAttachmentService service;
+        public UserAttachmentController(IUserAttachmentService service)
         {
             this.service = service;
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddAsync([FromForm] AttachmentToAdd attachmentToAdd)
+        public async Task<IActionResult> AddAsync([FromForm] UserAttachmentToAdd attachmentToAdd)
         {
             try
             {

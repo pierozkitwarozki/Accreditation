@@ -72,3 +72,4 @@
 /Users/bartlomiejpierog/VS Code Projects/Akredytacja/API/obj/Debug/net5.0/ref/API.dll
 /Users/bartlomiejpierog/VS Code Projects/Akredytacja/API/obj/Debug/net5.0/API.pdb
 /Users/bartlomiejpierog/VS Code Projects/Akredytacja/API/obj/Debug/net5.0/API.genruntimeconfig.cache
+/Users/bartlomiejpierog/VS Code Projects/Akredytacja/API/bin/Debug/net5.0/CloudinaryDotNet.dll

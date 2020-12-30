@@ -3,14 +3,14 @@ using Microsoft.AspNetCore.Http;
 
 namespace API.Dtos
 {
-    public class AttachmentToAdd
+    public class UserAttachmentToAdd
     {
         [Required]
         public string Name { get; set; }
         public string Description { get; set; }
         public string Url { get; set; }
         [Required]
-        public int PatternId { get; set; }
+        public int ApplicationId { get; set; }
         [Required]
         public IFormFile File { get; set; }
     }

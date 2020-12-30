@@ -12,6 +12,9 @@ namespace API.Data
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
         public DbSet<AccreditationPattern> AccreditationPatterns { get; set; }
         public DbSet<Attachment> Attachments { get; set; }
+        public DbSet<Application> Application { get; set; }
+        public DbSet<Accreditation> Accreditation { get; set; }
+        public DbSet<UserAttachment> UserAttachment { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -57,36 +60,6 @@ namespace API.Data
                 .WithMany(a => a.UserAttachments)
                 .HasForeignKey(a => a.ApplicationId)
                 .OnDelete(DeleteBehavior.Cascade);
-
-          /* builder.Entity<Attachment>()
-                .HasOne(p => p.Pattern)
-                .WithMany(p => p.Attachments)
-                .HasForeignKey(p => p.PatternId)
-                .OnDelete(DeleteBehavior.Cascade); */
-
-            builder.Entity<Attachment>()
-                .Navigation(x => x.Pattern)
-                .AutoInclude();            
-
-            builder.Entity<AccreditationPattern>()
-                .Navigation(x => x.Attachments)
-                .AutoInclude();
-
-            builder.Entity<Application>()
-                .Navigation(x => x.Pattern)
-                .AutoInclude();
-
-            builder.Entity<Application>()
-                .Navigation(x => x.User)
-                .AutoInclude();
-
-            builder.Entity<Accreditation>()
-                .Navigation(x => x.Pattern)
-                .AutoInclude();
-
-            builder.Entity<Accreditation>()
-                .Navigation(x => x.User)
-                .AutoInclude();
         }
     }
 }

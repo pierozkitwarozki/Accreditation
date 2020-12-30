@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "40/FjFSAO0rb6YSPttltFrdwUlLCObobtyCH6CNjdfOkChmzoLE7WklG1VtEk9+ZRWuks78bvoomRoX3QPKhVQ==",
+  "dgSpecHash": "E+g++DmwAoGXdJuCP95IquWeli1N5d7jdCZG3/LLsr0/MQz4cg+THs8+PsSekLyNytAuWdIsZW0IpD5sfMXmsA==",
   "success": true,
   "projectFilePath": "/Users/bartlomiejpierog/VS Code Projects/Akredytacja/API/API.csproj",
   "expectedPackageFiles": [
     "/Users/bartlomiejpierog/.nuget/packages/automapper/10.1.0/automapper.10.1.0.nupkg.sha512",
     "/Users/bartlomiejpierog/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/8.1.0/automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
+    "/Users/bartlomiejpierog/.nuget/packages/cloudinarydotnet/1.13.1/cloudinarydotnet.1.13.1.nupkg.sha512",
     "/Users/bartlomiejpierog/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/Users/bartlomiejpierog/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/5.0.1/microsoft.aspnetcore.authentication.jwtbearer.5.0.1.nupkg.sha512",
     "/Users/bartlomiejpierog/.nuget/packages/microsoft.aspnetcore.authentication.openidconnect/5.0.1/microsoft.aspnetcore.authentication.openidconnect.5.0.1.nupkg.sha512",

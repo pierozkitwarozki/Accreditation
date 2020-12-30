@@ -56,23 +56,18 @@ namespace API.ServicesImpl
 
             var userToCreate = _mapper.Map<AppUser>(userToRegisterDTO);
 
-            switch(userToRegisterDTO.Role)
+            if(userToRegisterDTO.Role == "Admin" || userToRegisterDTO.Role == "User")
             {
-                case("Admin"):
-                    await _userManager.AddToRoleAsync(userToCreate, "Admin");
-                    break;
-                case("User"):
-                    await _userManager.AddToRoleAsync(userToCreate, "User");
-                    break;
-                default:
-                    throw new Exception("No role");
+                var result = await _userManager.CreateAsync(userToCreate, userToRegisterDTO.Password);
+
+                await _userManager.AddToRoleAsync(userToCreate, userToRegisterDTO.Role);
+
+                if(!result.Succeeded) throw new Exception(result.Errors.ToString());
+
+                return Task.CompletedTask;
             }
 
-            var result = await _userManager.CreateAsync(userToCreate, userToRegisterDTO.Password);
-
-            if(!result.Succeeded) throw new Exception(result.Errors.ToString());
-
-            return Task.CompletedTask;
+            throw new Exception("Role doesn't exist");
 
         }
     }

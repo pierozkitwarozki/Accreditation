@@ -26,12 +26,13 @@ namespace API.ReposImpl
 
         public async Task<IEnumerable<AccreditationPattern>> GetAllAsync()
         {
-            return await context.AccreditationPatterns.ToListAsync();
+            return await context.AccreditationPatterns.Include(x => x.Attachments).ToListAsync();
         }
 
         public async Task<AccreditationPattern> GetAsync(int attachmentId)
         {
-            return await context.AccreditationPatterns.FindAsync(attachmentId);
+            return await context.AccreditationPatterns
+                .Include(x => x.Attachments).FirstOrDefaultAsync(x => x.Id == attachmentId);
         }
 
         public async Task<bool> SaveAllAsync()

@@ -10,7 +10,7 @@ namespace API.Services
     {
         Task<IAsyncResult> AddAsync(AttachmentToAdd attachmentToAdd);
         Task<IAsyncResult> DeleteAsync(int attachmentId);
-        Task<IEnumerable<Attachment>> GetAllAsync();
-        Task<Attachment> GetAsync(int attachmentId);
+        Task<IEnumerable<AttachmentToReturn>> GetAllAsync();
+        Task<AttachmentToReturn> GetAsync(int attachmentId);
     }
 }
