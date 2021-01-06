@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using API.Dtos;
 using API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -16,6 +17,7 @@ namespace API.Controllers
             this.service = service;
         }
 
+        [Authorize(Policy = "RequireAdminRole")]
         [HttpPost]
         public async Task<IActionResult> AddAsync(AccreditationPatternToAdd accreditationPatternToAdd)
         {
@@ -29,6 +31,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireUserRole")]
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
@@ -42,6 +45,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireUserRole")]
         [HttpGet("{accreditationPatternId}")]
         public async Task<IActionResult> GetAsync(int accreditationPatternId)
         {
@@ -55,6 +59,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdminRole")]
         [HttpDelete("{accreditationPatternId}")]
         public async Task<IActionResult> DeleteAsync(int accreditationPatternId)
         {

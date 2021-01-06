@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -14,7 +15,8 @@ namespace API.Controllers
         {
             this.service = service;
         }
-
+        
+        [Authorize(Policy = "RequireAdminRole")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
@@ -28,6 +30,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireUserRole")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(int id)
         {
@@ -41,6 +44,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireUserRole")]
         [HttpGet("for-user/{id}")]
         public async Task<IActionResult> GetAllForUserAsync(int id)
         {
@@ -54,6 +58,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdminRole")]
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {

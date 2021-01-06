@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using API.Dtos;
 using API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -16,6 +17,7 @@ namespace API.Controllers
             this.service = service;
         }
 
+        [Authorize(Policy = "RequireAdminRole")]
         [HttpPost]
         public async Task<IActionResult> AddAsync([FromForm] AttachmentToAdd attachmentToAdd)
         {
@@ -29,6 +31,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdminRole")]
         [HttpDelete("{attachmentId}")]
         public async Task<IActionResult> DeleteAsync(int attachmentId)
         {
@@ -42,6 +45,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdminRole")]
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
@@ -55,6 +59,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireUserRole")]
         [HttpGet("{attachmentId}")]
         public async Task<IActionResult> GetAsync(int attachmentId)
         {

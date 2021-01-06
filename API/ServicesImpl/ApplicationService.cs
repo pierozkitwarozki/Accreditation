@@ -54,13 +54,13 @@ namespace API.ServicesImpl
             throw new Exception("Error occured");
         }
 
-        public async Task<IAsyncResult> CommentApplicationAsync(int id, string comment)
+        public async Task<IAsyncResult> CommentApplicationAsync(int id, CommentToAdd comment)
         {
             var application = await applicationRepo.GetAsync(id);
 
             if (application == null) throw new Exception("Not found");
 
-            application.AdminComment = comment;
+            application.AdminComment = comment.Comment;
 
             if (await applicationRepo.SaveAllAsync()) return Task.CompletedTask;
 

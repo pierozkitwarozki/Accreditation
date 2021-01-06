@@ -14,6 +14,6 @@ namespace API.Services
          Task<IEnumerable<ApplicationToReturn>> GetAllAsync();
          Task<IEnumerable<ApplicationToReturn>> GetAllNonApprovedAsync();
          Task<IEnumerable<ApplicationToReturn>> GetAllForUserAsync(int id);
-         Task<IAsyncResult> CommentApplicationAsync(int id, string comment);
+         Task<IAsyncResult> CommentApplicationAsync(int id, CommentToAdd commentToAdd);
     }
 }

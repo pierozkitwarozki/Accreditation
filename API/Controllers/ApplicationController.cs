@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using API.Dtos;
 using API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -16,6 +17,7 @@ namespace API.Controllers
             this.service = service;
         }
 
+        [Authorize(Policy = "RequireUserRole")]
         [HttpPost]
         public async Task<IActionResult> AddAsync(ApplicationToAdd applicationToAdd)
         {
@@ -29,6 +31,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdminRole")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
@@ -41,7 +44,8 @@ namespace API.Controllers
                 return BadRequest(e.Message);
             }
         }
-
+        
+        [Authorize(Policy = "RequireAdminRole")]
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
@@ -55,6 +59,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireUserRole")]
         [HttpGet("non-approved")]
         public async Task<IActionResult> GetAllNonApprovedAsync()
         {
@@ -68,7 +73,7 @@ namespace API.Controllers
             }
         }
 
-
+        [Authorize(Policy = "RequireUserRole")]
         [HttpGet("for-user/{id}")]
         public async Task<IActionResult> GetAllForUserAsync(int id)
         {
@@ -82,6 +87,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireUserRole")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(int id)
         {
@@ -95,8 +101,9 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdminRole")]
         [HttpPut("comment/{id}")]
-        public async Task<IActionResult> CommentAsync(int id, string comment)
+        public async Task<IActionResult> CommentAsync(int id, CommentToAdd comment)
         {
             try
             {
@@ -108,6 +115,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(Policy = "RequireAdminRole")]
         [HttpPut("approve/{id}")]
         public async Task<IActionResult> ApproveAsync(int id)
         {
