@@ -6,13 +6,15 @@ import { UserToRegister } from '../_models/userToRegister';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { UserToReturn } from '../_models/userToReturn';
+import { Router } from '@angular/router';
+import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   url = environment.api + 'auth/';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   register(userToRegister: UserToRegister) {
     return this.http.post(
@@ -28,9 +30,17 @@ export class AuthService {
           const user: UserToReturn = response;
           localStorage.setItem('token', user.token);
           localStorage.setItem('user', JSON.stringify(user));
+          if(user.role == 'Admin') {
+            this.router.navigateByUrl('/admin');
+          }
           return response;
         }
       })
     );
+  }
+
+  logOut() {
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/login');
   }
 }

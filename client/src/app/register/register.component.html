@@ -125,7 +125,7 @@
         <mat-error *ngIf="confirmPasswordFormControl.hasError('required')">
           Hasło jest <strong>wymagane</strong>
         </mat-error>
-        <mat-error *ngIf="!passwordMatchValidator()">
+        <mat-error *ngIf="!passwordMatchValidator() && !confirmPasswordFormControl.hasError('required')">
             Hasła <strong>nie są takie same</strong>
         </mat-error>
       </mat-form-field>
