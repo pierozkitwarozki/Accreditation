@@ -1,0 +1,150 @@
+<mat-card
+  style="
+    margin-top: 100px;
+    width: fit-content;
+    height: fit-content;
+    margin-inline: auto;
+    padding: 50px;
+  "
+>
+  <mat-card-title style="margin: auto">Utwórz konto</mat-card-title>
+  <mat-card-content style="margin-top: 50px">
+    <form class="example-form" (ngSubmit)="register()">
+      <!--Nazwa użytkownika-->
+      <mat-form-field class="example-full-width">
+        <mat-label>Nazwa użytkownika</mat-label>
+        <input
+          type="text"
+          matInput
+          [formControl]="userNameFormControl"
+          [errorStateMatcher]="matcher"
+          placeholder="Nazwa użytkownika"
+        />
+
+        <mat-error *ngIf="userNameFormControl.hasError('required')">
+          Nazwa użytkownika jest <strong>wymagana</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!--Imię-->
+      <mat-form-field class="example-full-width">
+        <mat-label>Imię</mat-label>
+        <input
+          type="text"
+          matInput
+          [formControl]="nameFormControl"
+          [errorStateMatcher]="matcher"
+          placeholder="Imię"
+        />
+
+        <mat-error *ngIf="nameFormControl.hasError('required')">
+          Imię jest <strong>wymagana</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!--Nazwisko-->
+      <mat-form-field class="example-full-width">
+        <mat-label>Nazwisko</mat-label>
+        <input
+          type="text"
+          matInput
+          [formControl]="surnameFormControl"
+          [errorStateMatcher]="matcher"
+          placeholder="Imię"
+        />
+
+        <mat-error *ngIf="surnameFormControl.hasError('required')">
+          Nazwisko jest <strong>wymagana</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!--Adres e-mail-->
+      <mat-form-field class="example-full-width">
+        <mat-label>E-mail</mat-label>
+        <input
+          type="email"
+          matInput
+          [formControl]="emailFormControl"
+          [errorStateMatcher]="matcher"
+          placeholder="Email"
+        />
+        <mat-error
+          *ngIf="
+            emailFormControl.hasError('email') &&
+            !emailFormControl.hasError('required')
+          "
+        >
+          Wprowadź <strong>prawidłowy adres e-mail</strong>
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email jest <strong>wymagany</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!--Numer telefonu-->
+      <mat-form-field class="example-full-width">
+        <mat-label>Numer telefonu</mat-label>
+        <input
+          type="number"
+          matInput
+          [formControl]="phoneNumberFormControl"
+          [errorStateMatcher]="matcher"
+          placeholder="Numer telefonu"
+        />
+
+        <mat-error *ngIf="phoneNumberFormControl.hasError('required')">
+          Numer telefonu jest <strong>wymagany</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!--Hasło-->
+      <mat-form-field class="example-full-width">
+        <mat-label>Hasło</mat-label>
+        <input
+          type="password"
+          matInput
+          [formControl]="passwordFormControl"
+          [errorStateMatcher]="matcher"
+          placeholder="Hasło"
+        />
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          Hasło jest <strong>wymagane</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!--Potwierdź hasło-->
+      <mat-form-field class="example-full-width">
+        <mat-label>Potwierdź hasło</mat-label>
+        <input
+          type="password"
+          matInput
+          [formControl]="confirmPasswordFormControl"
+          [errorStateMatcher]="matcher"
+          placeholder="Potwierdź hasło"
+        />
+        <mat-error *ngIf="confirmPasswordFormControl.hasError('required')">
+          Hasło jest <strong>wymagane</strong>
+        </mat-error>
+        <mat-error *ngIf="!passwordMatchValidator()">
+            Hasła <strong>nie są takie same</strong>
+        </mat-error>
+      </mat-form-field>
+      <div style="width: 100%;">
+        <mat-slide-toggle [checked]="checked" color="accent">Administrator</mat-slide-toggle>
+      </div>
+      
+      <button
+        mat-raised-button
+        color="primary"
+        style="margin-top: 20px"
+        [disabled]="!isValid()"
+        type="submit"
+      >
+        Zajestruj się
+      </button>
+    </form>
+  </mat-card-content>
+  <mat-card-footer>
+
+  </mat-card-footer>
+</mat-card>

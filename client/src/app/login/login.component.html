@@ -1,0 +1,54 @@
+<mat-card
+  style="
+    margin-top: 100px;
+    width: fit-content;
+    height: fit-content;
+    margin-inline: auto;
+    padding: 50px;
+  "
+>
+  <mat-card-title style="margin: auto">Zaloguj się!</mat-card-title>
+  <mat-card-content style="margin-top: 50px">
+    <form class="example-form" (ngSubmit)="login()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nazwa użytkownika</mat-label>
+        <input
+          type="text"
+          matInput
+          [formControl]="userNameFormControl"
+          [errorStateMatcher]="matcher"
+          placeholder="Nazwa użytkownika"
+        />
+
+        <mat-error *ngIf="userNameFormControl.hasError('required')">
+          Nazwa użytkownika jest <strong>wymagana</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Hasło</mat-label>
+        <input
+          type="password"
+          matInput
+          [formControl]="passwordFormControl"
+          [errorStateMatcher]="matcher"
+          placeholder="Hasło"
+        />
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          Hasło jest <strong>wymagane</strong>
+        </mat-error>
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        style="margin-top: 20px;"
+        [disabled]="!passwordFormControl.valid || !userNameFormControl.valid"
+        type="submit"
+      >
+        Zaloguj się
+      </button>
+    </form>
+  </mat-card-content>
+  <mat-card-footer>
+      <p>Nie masz konta? <strong style="color: 'primary'; cursor: pointer;" [routerLink]="['/register']">Zarejestruj się!</strong></p>
+  </mat-card-footer>
+</mat-card>
