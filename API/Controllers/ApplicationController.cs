@@ -74,6 +74,20 @@ namespace API.Controllers
         }
 
         [Authorize(Policy = "RequireUserRole")]
+        [HttpGet("single/{patternId}/{userId}")]
+        public async Task<IActionResult> GetSingleAsync(int patternId, int userId)
+        {
+            try
+            {
+                return Ok(await service.GetSingleAsync(patternId, userId));
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [Authorize(Policy = "RequireUserRole")]
         [HttpGet("for-user/{id}")]
         public async Task<IActionResult> GetAllForUserAsync(int id)
         {

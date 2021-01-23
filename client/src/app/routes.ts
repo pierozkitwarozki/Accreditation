@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
+import { HomeUserComponent } from './home-user/home-user.component';
 import { LoginComponent } from './login/login.component';
 import { PatternPreviewComponent } from './pattern-preview/pattern-preview.component';
 import { RegisterComponent } from './register/register.component';
@@ -15,4 +16,5 @@ export const appRoutes: Routes = [
     resolve: { pattern: PreviewPatternResolver },
   },
   { path: 'admin', component: HomeAdminComponent },
+  { path: 'user', component: HomeUserComponent },
 ];

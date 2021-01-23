@@ -28,11 +28,14 @@ export class AuthService {
       map((response: UserToReturn) => {
         if (response) {
           const user: UserToReturn = response;
-          localStorage.setItem('token', user.token);
+          localStorage.setItem('acc_token', user.token);
           localStorage.setItem('user', JSON.stringify(user));
           if(user.role == 'Admin') {
             this.router.navigateByUrl('/admin');
+          } else if (user.role == 'User') {
+            this.router.navigateByUrl('/user');
           }
+          
           return response;
         }
       })
@@ -40,7 +43,7 @@ export class AuthService {
   }
 
   logOut() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('acc_token');
     this.router.navigateByUrl('/login');
   }
 }

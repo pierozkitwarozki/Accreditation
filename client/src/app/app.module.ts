@@ -14,6 +14,10 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
+import { UserManagerComponent } from './user-manager/user-manager.component';
+import { AccreditationPatternsComponent } from './accreditation-patterns/accreditation-patterns.component';
+import { PatternPreviewComponent } from './pattern-preview/pattern-preview.component';
+import { PreviewPatternResolver } from './_resolvers/previewpattern.resolver';
 
 // Angular - material modules
 import { MatCardModule } from '@angular/material/card';
@@ -26,15 +30,15 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
-import { UserManagerComponent } from './user-manager/user-manager.component';
 import { MatListModule } from '@angular/material/list';
-import { AccreditationPatternsComponent } from './accreditation-patterns/accreditation-patterns.component';
-import { PatternPreviewComponent } from './pattern-preview/pattern-preview.component';
-import { PreviewPatternResolver } from './_resolvers/previewpattern.resolver';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { FileUploadModule } from 'ng2-file-upload';
+import { HomeUserComponent } from './home-user/home-user.component';
+
 
 
 export function tokenGetter() {
-  return localStorage.getItem('token');
+  return localStorage.getItem('acc_token');
 }
 
 @NgModule({
@@ -46,13 +50,16 @@ export function tokenGetter() {
     HomeAdminComponent,
     UserManagerComponent,
     AccreditationPatternsComponent,
-    PatternPreviewComponent
+    PatternPreviewComponent,
+    HomeUserComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    FileUploadModule,
     MatIconModule,
+    MatExpansionModule,
     MatButtonModule,
     MatStepperModule,
     MatTableModule,

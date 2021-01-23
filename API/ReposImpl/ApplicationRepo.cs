@@ -59,6 +59,11 @@ namespace API.ReposImpl
 
         }
 
+        public async Task<Application> GetSingleAsync(int patternId, int userId)
+        {
+            return await context.Application.FirstOrDefaultAsync(x => x.PatternId == patternId && x.UserId == userId);
+        }
+
         public async Task<bool> SaveAllAsync()
         {
             return await context.SaveChangesAsync() > 0;

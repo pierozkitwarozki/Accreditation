@@ -1,6 +1,7 @@
 <!--Nowy wzór-->
-<mat-card-title style="margin-top: 20px;">Dodaj akredytację</mat-card-title>
-  <mat-horizontal-stepper #stepper [linear]='isLinear'>
+<mat-card-title style="margin-top: 20px;" *ngIf="loggedUser.role=='Admin'">Dodaj akredytację</mat-card-title>
+<mat-card-title style="margin-top: 20px;" *ngIf="loggedUser.role=='User'">Dostępne akredytacje</mat-card-title>
+  <mat-horizontal-stepper #stepper [linear]='isLinear' *ngIf="loggedUser.role=='Admin'">
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Wprowadź nazwę akredytacji</ng-template>
@@ -35,7 +36,7 @@
         <button mat-button color="accent" (click)="add()">Dodaj</button>
       </div>
     </mat-step>
-  </mat-horizontal-stepper>
+</mat-horizontal-stepper>
 
 
 

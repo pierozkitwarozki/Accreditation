@@ -23,6 +23,7 @@
     "@angular/router": "~9.1.6",
     "@auth0/angular-jwt": "^5.0.2",
     "alertifyjs": "^1.13.1",
+    "ng2-file-upload": "^1.4.0",
     "ngx-toastr": "^13.2.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",

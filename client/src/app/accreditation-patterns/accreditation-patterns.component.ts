@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Pattern } from '../_models/pattern';
 import { PatternToAdd } from '../_models/patternToAdd';
+import { UserToReturn } from '../_models/userToReturn';
 import { AccreditationPatternService } from '../_services/accreditation-pattern.service';
 import { AlertifyService } from '../_services/alertify.service';
 
@@ -15,6 +16,7 @@ export class AccreditationPatternsComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   isLinear = true;
+  loggedUser: UserToReturn = JSON.parse(localStorage.getItem('user'));
 
   // table
   patterns: Pattern[] = [];

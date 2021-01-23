@@ -124,5 +124,16 @@ namespace API.ServicesImpl
 
             return applicationToReturn;
         }
+
+        public async Task<ApplicationToReturn> GetSingleAsync(int patternId, int userId)
+        {
+            var application = await applicationRepo.GetSingleAsync(patternId, userId);
+
+            if (application == null) throw new Exception("Not found");
+
+            var applicationToReturn = mapper.Map<ApplicationToReturn>(application);
+
+            return applicationToReturn;
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace API.Repos
         void Delete(Application application);
         Task<Application> GetAsync(int applicationId);
         Task<IEnumerable<Application>> GetAllAsync();
+        Task<Application> GetSingleAsync(int patternId, int userId);
         Task<IEnumerable<Application>> GetAllNonApprovedAsync();
         Task<IEnumerable<Application>> GetAllForUserAsync(int id);
         Task<bool> SaveAllAsync();
