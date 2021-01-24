@@ -1,0 +1,34 @@
+<table
+  mat-table
+  [dataSource]="applications"
+  style="margin-top: 20px"
+  class="mat-elevation-z8"
+>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Nazwa akredytacji</th>
+    <td mat-cell *matCellDef="let element" [routerLink]="['/applications/', element.id]">{{ element.name }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Opis akredytacji</th>
+    <td mat-cell *matCellDef="let element" [routerLink]="['/applications/', element.id]">{{ element.description }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="approved">
+    <th mat-header-cell *matHeaderCellDef>Status wniosku</th>
+    <td mat-cell *matCellDef="let element" [routerLink]="['/applications/', element.id]">
+        {{ element.approved ? "Przyznano" : "Oczekuje na zatwierdzenie" }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="adminComment">
+    <th mat-header-cell *matHeaderCellDef>Komentarz rozpatrującego</th>
+    <td mat-cell *matCellDef="let element" [routerLink]="['/applications/', element.id]">
+        {{ element.adminComment ? element.adminComment : "Brak komentarza" }}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

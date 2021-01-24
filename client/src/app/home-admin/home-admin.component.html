@@ -5,7 +5,7 @@
     <mat-tab-group>
       <mat-tab label="Zarządzanie użytkownikami"><app-user-manager></app-user-manager></mat-tab>
       <mat-tab label="Wzory akredytacji"><app-accreditation-patterns></app-accreditation-patterns></mat-tab>
-      <mat-tab label="Oczekujące wnioski"> Content 3 </mat-tab>
+      <mat-tab label="Oczekujące wnioski"><app-applications [applications]="applicationsNonApproved"></app-applications></mat-tab>
     </mat-tab-group>
   </mat-card-content>
 </mat-card>

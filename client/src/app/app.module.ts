@@ -34,6 +34,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FileUploadModule } from 'ng2-file-upload';
 import { HomeUserComponent } from './home-user/home-user.component';
+import { ApplicationPreviewComponent } from './application-preview/application-preview.component';
+import { ApplicationsComponent } from './applications/applications.component';
+import { ApplicationResolver } from './_resolvers/application.resolver';
+import { AccreditationsComponent } from './accreditations/accreditations.component';
 
 
 
@@ -51,7 +55,10 @@ export function tokenGetter() {
     UserManagerComponent,
     AccreditationPatternsComponent,
     PatternPreviewComponent,
-    HomeUserComponent
+    HomeUserComponent,
+    ApplicationPreviewComponent,
+    ApplicationsComponent,
+    AccreditationsComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +89,7 @@ export function tokenGetter() {
     MatSlideToggleModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [ErrorInterceptorProvider, PreviewPatternResolver],
+  providers: [ErrorInterceptorProvider, PreviewPatternResolver, ApplicationResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

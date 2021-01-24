@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <span>System wydawania akredytacji</span>
+      <span (click)="redirect()">System wydawania akredytacji</span>
       <span class="example-spacer"></span>
       <button *ngIf="isLoggedIn()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="authService.logOut()">
         <mat-icon >logout</mat-icon>
