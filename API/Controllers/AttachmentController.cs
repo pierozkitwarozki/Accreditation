@@ -23,7 +23,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.AddAsync(attachmentToAdd));
+                var result = service.AddAsync(attachmentToAdd);
+                return Ok(await result);
             }
             catch(Exception e)
             {
@@ -37,7 +38,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.DeleteAsync(attachmentId));
+                var result = service.DeleteAsync(attachmentId);
+                return Ok(await result);
             }
             catch(Exception e)
             {
@@ -51,7 +53,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.GetAllAsync());
+                var result =  service.GetAllAsync();
+                return Ok(await result);
             }
             catch(Exception e)
             {
@@ -65,7 +68,8 @@ namespace API.Controllers
         {
             try 
             {
-                return Ok(await service.GetAsync(attachmentId));
+                var result = service.GetAsync(attachmentId);
+                return Ok(await result);
             }
             catch(Exception e)
             {

@@ -23,7 +23,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.DeleteAsync(id));
+                var result = service.DeleteAsync(id);
+                return Ok(await result);
             }
             catch (Exception e)
             {
@@ -37,7 +38,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.GetAsync(id));
+                var result = service.GetAsync(id);
+                return Ok(await result);
             }
             catch (Exception e)
             {
@@ -54,7 +56,9 @@ namespace API.Controllers
                 var id =
                        int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-                return Ok(await service.GetAsync(id));
+                var result = service.GetAsync(id);
+
+                return Ok(await result);
             }
             catch (Exception e)
             {
@@ -68,7 +72,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.GetAllAsync());
+                var result = service.GetAllAsync();
+                return Ok(await result);
             }
             catch (Exception e)
             {
@@ -82,7 +87,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.GetAllAdminsAsync());
+                var result = service.GetAllAdminsAsync();
+                return Ok(await result);
             }
             catch (Exception e)
             {
@@ -96,7 +102,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.GetAllUsersAsync());
+                var result = service.GetAllUsersAsync();
+                return Ok(await result);
             }
             catch (Exception e)
             {

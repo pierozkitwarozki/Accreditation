@@ -23,7 +23,8 @@ namespace API.Controllers
         {
             try 
             {
-                return Ok(await service.AddAsync(accreditationPatternToAdd));
+                var result = service.AddAsync(accreditationPatternToAdd);
+                return Ok(await result);
             }
             catch(Exception e)
             {
@@ -37,7 +38,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.GetAllAsync());
+                var result = service.GetAllAsync();
+                return Ok(await result);
             }
             catch(Exception e)
             {
@@ -51,7 +53,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.GetAsync(accreditationPatternId));
+                var result = service.GetAsync(accreditationPatternId);
+                return Ok(await result);
             }
             catch(Exception e)
             {
@@ -65,7 +68,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.DeleteAsync(accreditationPatternId));
+                var result = service.DeleteAsync(accreditationPatternId);
+                return Ok(await result);
             }
             catch(Exception e)
             {

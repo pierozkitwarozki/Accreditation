@@ -22,7 +22,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.DeleteAsync(id));
+                var result = service.DeleteAsync(id);
+                return Ok(await result);
             }
             catch(Exception e)
             {
@@ -36,7 +37,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.GetAsync(id));
+                var result = service.GetAsync(id);
+                return Ok(await result);
             }
             catch(Exception e)
             {
@@ -50,7 +52,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.GetAllForUserAsync(id));
+                var result = service.GetAllForUserAsync(id);
+                return Ok(await result);
             }
             catch(Exception e)
             {
@@ -64,7 +67,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.GetAllAsync());
+                var result = service.GetAllAsync();
+                return Ok(await result);
             }
             catch(Exception e)
             {

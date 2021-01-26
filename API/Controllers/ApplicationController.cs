@@ -23,7 +23,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.AddAsync(applicationToAdd));
+                var result = service.AddAsync(applicationToAdd);
+                return Ok(await result);
             }
             catch(Exception e)
             {
@@ -37,7 +38,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.DeleteAsync(id));
+                var result = service.DeleteAsync(id);
+                return Ok(await result);
             }
             catch(Exception e)
             {
@@ -51,7 +53,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.GetAllAsync());
+                var result = service.GetAllAsync();
+                return Ok(await result);
             }
             catch(Exception e)
             {
@@ -65,7 +68,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.GetAllNonApprovedAsync());
+                var result = service.GetAllNonApprovedAsync();
+                return Ok(await result);
             }
             catch(Exception e)
             {
@@ -79,7 +83,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.GetSingleAsync(patternId, userId));
+                var result = service.GetSingleAsync(patternId, userId);
+                return Ok(await result);
             }
             catch(Exception e)
             {
@@ -93,7 +98,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.GetAllForUserAsync(id));
+                var result = service.GetAllForUserAsync(id);
+                return Ok(await result);
             }
             catch(Exception e)
             {
@@ -107,7 +113,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.GetAsync(id));
+                var result = service.GetAsync(id);
+                return Ok(await result);
             }
             catch(Exception e)
             {
@@ -121,7 +128,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.CommentApplicationAsync(id, comment));
+                var result = service.CommentApplicationAsync(id, comment);
+                return Ok(await result);
             }
             catch(Exception e)
             {
@@ -135,7 +143,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await service.ApproveAsync(id));
+                var result = service.ApproveAsync(id);
+                return Ok(await result);
             }
             catch(Exception e)
             {

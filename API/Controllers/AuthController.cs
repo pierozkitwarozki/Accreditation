@@ -24,7 +24,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await _authService.RegisterUserAsync(userToRegisterDTO));
+                var result = _authService.RegisterUserAsync(userToRegisterDTO);
+                return Ok(await result);
             }
             catch(Exception e)
             {
@@ -37,7 +38,8 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await _authService.LoginUserAsync(userToLoginDTO));
+                var result = _authService.LoginUserAsync(userToLoginDTO);
+                return Ok(await result);
             }
             catch(Exception e)
             {
